@@ -1,6 +1,9 @@
 'use server'
-import { getCarIdRetunCarInfo, getServiceIdRetunServiceInfo } from '@/db/utlDb'
-import db from '@/lib/prisma'
+import {
+  getCarIdRetunCarInfo,
+  getServiceIdRetunServiceInfo
+} from 'more/db/utlDb'
+import db from 'more/lib/prisma'
 import { revalidatePath } from 'next/cache'
 import { CollectRatine } from './rateDb'
 

@@ -1,6 +1,6 @@
 'use client'
 import * as React from 'react'
-import { cn } from '@/lib/utils'
+import { cn } from 'more/lib/utils'
 import { useMediaQuery } from '@react-hook/media-query'
 import { Button } from '@/components/ui/button'
 import {

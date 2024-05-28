@@ -2,7 +2,7 @@
 import React, { useState } from 'react'
 import { Button } from '@/components/ui/button'
 import { Dislike, Like } from '@/components/svg/LikeAndDislike'
-import { HeartHandshake, MessageCircleMore, Share2 } from '@/lib/icons'
+import { HeartHandshake, MessageCircleMore, Share2 } from 'more/lib/icons'
 import {
   addDislikeAction,
   addFavoriteAction,
@@ -118,34 +118,37 @@ function UserActions({
     setFavItLoading(false)
   }
   return (
-    <div className='fixed left-2 top-[65px] z-50 flex flex-col items-center justify-end gap-4 px-1 '>
-      <UserAction
-        label='Like'
-        count={likeCount}
-        isLoading={isLikeLoading}
-        icon={Like}
-        isActive={userActions.isLike}
-        onClick={handleLikeAction}
-      />
-      <UserAction
-        label='Fav'
-        count={favCount}
-        isLoading={isFavItLoading}
-        icon={HeartHandshake}
-        isActive={userActions.isFav}
-        onClick={handleFavoriteAction}
-      />
+    <div className='fixed right-3 top-[120px] z-50 flex w-full items-center justify-start'>
+      <div className='flex w-fit flex-col items-center justify-center gap-4 rounded-3xl  border border-primary bg-primary/30 p-2  shadow-lg '>
+        {/* <div className='fixed left-2 top-[65px] z-50 flex flex-col items-center justify-end gap-4 px-1 '></div> */}
+        <UserAction
+          label='Like'
+          count={likeCount}
+          isLoading={isLikeLoading}
+          icon={Like}
+          isActive={userActions.isLike}
+          onClick={handleLikeAction}
+        />
+        <UserAction
+          label='Fav'
+          count={favCount}
+          isLoading={isFavItLoading}
+          icon={HeartHandshake}
+          isActive={userActions.isFav}
+          onClick={handleFavoriteAction}
+        />
 
-      <UserAction
-        label='Dislike'
-        count={disLikeCount}
-        isLoading={isDisLikeLoading}
-        icon={Dislike}
-        isActive={userActions.isDisLike}
-        onClick={handleDislikeAction}
-      />
-      <Comments commentCount={commentCount} />
-      <Shared shareCount={shareCount} />
+        <UserAction
+          label='Dislike'
+          count={disLikeCount}
+          isLoading={isDisLikeLoading}
+          icon={Dislike}
+          isActive={userActions.isDisLike}
+          onClick={handleDislikeAction}
+        />
+        <Comments commentCount={commentCount} />
+        <Shared shareCount={shareCount} />
+      </div>
     </div>
   )
 }
@@ -181,7 +184,7 @@ function UserAction({
     <Button
       variant='ghost'
       onClick={handleClick}
-      className={`size-10 border border-primary shadow-lg ${isActive ? 'bg-primary text-white' : 'bg-primary/40'}`}
+      className={`size-10 rounded-3xl border border-primary shadow-lg ${isActive ? 'bg-primary text-white' : 'bg-primary/40'}`}
     >
       {isLoading ? (
         <SubSpinner />
@@ -203,30 +206,24 @@ function UserAction({
 
 const Comments = ({ commentCount }) => {
   return (
-    <div className='flex w-full items-center justify-center gap-4'>
-      <Button
-        variant='outline'
-        className='flex size-10 h-16 flex-col items-center justify-center gap-2 rounded-md border bg-secondary'
-      >
-        <MessageCircleMore className={`size-4 text-muted-foreground`} />
-        <span className='text-[.7rem] text-muted-foreground'>
-          {commentCount}
-        </span>
-      </Button>
-    </div>
+    <Button
+      variant='ghost'
+      className='flex  size-10 flex-col items-center justify-center    p-0'
+    >
+      <MessageCircleMore className='size-4 text-muted-foreground' />
+      <span className='text-[.7rem] text-muted-foreground'>{commentCount}</span>
+    </Button>
   )
 }
 
 const Shared = ({ shareCount }) => {
   return (
-    <div className='flex w-full items-center justify-center gap-4'>
-      <Button
-        variant='outline'
-        className='flex  size-10 h-16 flex-col items-center justify-center gap-2 rounded-md border bg-secondary'
-      >
-        <Share2 className={`size-4 text-muted-foreground`} />
-        <span className='text-[.7rem] text-muted-foreground'>{shareCount}</span>
-      </Button>
-    </div>
+    <Button
+      variant='ghost'
+      className='flex  size-10 flex-col items-center justify-center    p-0'
+    >
+      <Share2 className={`size-4 text-muted-foreground`} />
+      <span className='text-[.7rem] text-muted-foreground'>{shareCount}</span>
+    </Button>
   )
 }

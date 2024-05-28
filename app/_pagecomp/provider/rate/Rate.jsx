@@ -3,8 +3,10 @@ import Submit from '@/components/shared/Submit'
 import Text from '@/components/shared/Text'
 import { StarFilled } from '@/components/svg/StarFilled'
 import { Textarea } from '@/components/ui/textarea'
+// FIXME: ../ update to alis path
+
 import { newRate } from '../db/rateDb'
-import { Notify } from '../sections/herosection/logic'
+import { Notify } from '@/lib/nadish'
 
 export function Rate(props) {
   const handlerateing = async formData => {

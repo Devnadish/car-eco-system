@@ -11,8 +11,8 @@ import {
   DrawerFooter,
   DrawerTrigger
 } from '@/components/ui/drawer'
-import { EMail } from '../../../../components/svg/Mail'
 import MsgForm from '@/app/_pagecomp/admin/mailsystem/MsgForm'
+import { EMail } from '@/components/svg/Mail'
 
 function NewMail({ urlPrefix, session, to }) {
   const [open, setOpen] = React.useState(false)

@@ -2,7 +2,7 @@
 import Image from 'next/image'
 import React, { useState } from 'react'
 import { useDropzone } from 'react-dropzone'
-import { Notify } from '@/lib/nadish'
+import { Notify } from 'more/lib/nadish'
 const ImageUploader = ({
   onDrop,
   acceptedFiles = [],

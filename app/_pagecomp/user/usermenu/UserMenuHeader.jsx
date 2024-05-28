@@ -4,7 +4,7 @@ import AvatarImage from '@/components/shared/image/AvatarImage'
 import { Verifyed } from '@/components/svg/Verifyed'
 import { NotActive } from '@/components/svg/NotActive'
 import ThemeSwitch from '@/components/shared/ThemeSwitch'
-import { Bell, Pencil } from '@/lib/icons'
+import { Bell, Pencil } from 'more/lib/icons'
 import Link from 'next/link'
 import Inbox from '@/app/_pagecomp/admin/mailsystem/Inbox'
 

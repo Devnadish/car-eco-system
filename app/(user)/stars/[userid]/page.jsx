@@ -1,7 +1,7 @@
 import React from 'react'
 import { SectionTitle } from '@/components/shared/SectionTitle'
-import { Star } from '@/lib/icons'
-import { getUserActions } from '@/db/utlDb'
+import { Star } from 'more/lib/icons'
+import { getUserActions } from 'more/db/utlDb'
 
 export async function page({ params }) {
   const favorateProvider = await getUserActions(params.userid, 4)

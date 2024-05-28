@@ -2,12 +2,12 @@
 import React, { useState } from 'react'
 import DialogBox from '@/components/shared/DialogBox'
 import { Button } from '@/components/ui/button'
-import { Search } from '@/lib/icons'
+import { Search } from 'more/lib/icons'
 import { Label } from '@/components/ui/label'
 import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group'
 import Submit from '@/components/shared/Submit'
 import { usePathname, useSearchParams, useRouter } from 'next/navigation'
-import { urlQuery } from '@/lib/nadish'
+import { urlQuery } from 'more/lib/nadish'
 import { Input } from '@/components/ui/input'
 
 function SearchProvider() {

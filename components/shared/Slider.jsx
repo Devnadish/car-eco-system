@@ -10,13 +10,13 @@ import {
   CarouselPrevious
 } from '@/components/ui/carousel'
 import Autoplay from 'embla-carousel-autoplay'
-import { carLogos } from '@/constant/carLogo'
+import { carLogos } from 'more/constant/carLogo'
 import Image from 'next/image'
 import Text from './Text'
-import { Notify } from '@/lib/nadish'
+import { Notify } from 'more/lib/nadish'
 import { useRouter, usePathname } from 'next/navigation'
-import { urlQuery } from '@/lib/nadish'
-import { ListRestart } from '@/lib/icons'
+import { urlQuery } from 'more/lib/nadish'
+import { ListRestart } from 'more/lib/icons'
 
 function Slider() {
   const pathName = usePathname()

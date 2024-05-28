@@ -4,8 +4,8 @@ import { useInView } from 'react-intersection-observer'
 import { getProviderList } from '@/app/_pagecomp/provider/db/providerList'
 import { usePathname, useSearchParams } from 'next/navigation'
 import NewCard from './NewCard'
-import { SubSpinner } from '../provider/sections/herosection/logic'
 import { Nodata } from './Nodata'
+import { SubSpinner } from '@/components/shared/Spinner'
 export const dynamic = 'force-dynamic'
 
 const LoadMore = ({ query, pageCount }) => {

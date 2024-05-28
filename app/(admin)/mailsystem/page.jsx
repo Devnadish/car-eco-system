@@ -1,11 +1,11 @@
 import React from 'react'
 import { getServerSession } from 'next-auth'
-import { options } from 'authentication/options'
+import { options } from 'more/provider/authentication/options'
 import { Card, CardContent, CardFooter } from '@/components/ui/card'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
 import Text from '@/components/shared/Text'
-import { getTimeElapsed } from '@/lib/nadish'
-import { Eye } from '@/lib/icons'
+import { getTimeElapsed } from 'more/lib/nadish'
+import { Eye } from 'more/lib/icons'
 import { DisplayMai } from '@/app/_pagecomp/admin/mailsystem/DisplayMai'
 import NewMail from '@/app/_pagecomp/admin/mailsystem/NewMail'
 import { collectMail } from '@/app/_pagecomp/admin/mailsystem/db/inbox'
@@ -98,37 +98,3 @@ const ShowMAils = ({ data }) => {
     </div>
   )
 }
-
-// export const sendMail = async data => {
-//   const { to, from, subject, msg, ...rest } = data
-
-//   if (to === from) {
-//     return {
-//       status: false,
-//       message: 'لا يمكن ارسال البريد الالكتروني لنفسك'
-//     }
-//   }
-
-//   const userExists = await db.user.findFirst({
-//     where: { email: to }
-//   })
-
-//   if (!userExists) {
-//     return {
-//       status: false,
-//       message: 'البريد الالكتروني غير موجود'
-//     }
-//   }
-
-//   const newMail = await db.inbox.create({ data: { ...data, isOpen: false } })
-
-//   await revalidatePath('/')
-//   await revalidatePath('/mailsystem')
-
-//   return {
-//     status: newMail.id ? true : false,
-//     message: newMail.id
-//       ? 'تم ارسال الايميل شاكرين تعاونكم وستم الرد عليكم في اقرب وقت ممكن'
-//       : 'لم يتم ارسال الايمبل'
-//   }
-// }

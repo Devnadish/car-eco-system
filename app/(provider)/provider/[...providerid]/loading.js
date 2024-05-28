@@ -1,7 +1,8 @@
+import SingleProviderSkelton from '@/app/_pagecomp/skelton/SingleProviderSkelton'
 import React from 'react'
 
 function loading() {
-  return <div>loading</div>
+  return <SingleProviderSkelton />
 }
 
 export default loading

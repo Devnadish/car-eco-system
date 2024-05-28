@@ -1,5 +1,5 @@
 'use client'
-import { FilterX } from '@/lib/icons'
+import { FilterX } from 'more/lib/icons'
 import React from 'react'
 import { Button } from '../ui/button'
 import { usePathname, useSearchParams, useRouter } from 'next/navigation'
@@ -15,8 +15,8 @@ function ClearFilter() {
   }
 
   return (
-    <Button onClick={handleClearSearch} variant="ghost" className="h-9">
-      <FilterX  className="text-primary" strokeWidth={1}/>
+    <Button onClick={handleClearSearch} variant='ghost' className='h-9'>
+      <FilterX className='text-primary' strokeWidth={1} />
     </Button>
   )
 }

@@ -2,18 +2,18 @@ import React from 'react'
 
 import { SectionTitle } from '@/components/shared/SectionTitle'
 import { Dislike, Like } from '@/components/svg/LikeAndDislike'
-// import { getUserActions } from '@/db/utlDb'
 import NewCard from '@/app/_pagecomp/home/NewCard'
 import Link from 'next/link'
 import { StarFilled } from '@/components/svg/StarFilled'
 import { HistoryIcon } from '@/components/svg/History'
-import { HeartHandshake, Trash } from '@/lib/icons'
+import { HeartHandshake, Trash } from 'more/lib/icons'
 import { getUserActions } from '@/app/_pagecomp/user/db/reaction'
 import Text from '@/components/shared/Text'
 import RemoveActionButton from '@/app/_pagecomp/user/useractions/RemoveAction'
-// import { getUserActions } from '@/components/pages/user/reacion/db/reaction'
 export const dynamic = 'force-dynamic'
 
+// show menu for like and dislike and all reaction
+// TODO:  restyle it to make it more beautiful and tablluar
 export async function page({ params }) {
   const userId = params.userid[0]
   const requestType = params.userid[1]

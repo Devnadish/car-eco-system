@@ -1,5 +1,5 @@
 import React from 'react'
-import RateSkelton from '../../../_pagecomp/provider/rate/RateSkelton'
+import RateSkelton from '@/app/_pagecomp/provider/rate/RateSkelton'
 
 function loading() {
   return (

@@ -1,6 +1,6 @@
 'use client'
 import React, { useState } from 'react'
-import { KeyRound } from '@/lib/icons'
+import { KeyRound } from 'more/lib/icons'
 import Link from 'next/link'
 
 function LoginBtn() {

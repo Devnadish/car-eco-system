@@ -1,5 +1,5 @@
 import React from 'react'
-import CardSkelton from './_pagecomp/home/CardSkelton'
+import CardSkelton from './_pagecomp/skelton/CardSkelton'
 
 function loading() {
   return (

@@ -5,8 +5,8 @@ import {
   code401msg,
   htmlMsg,
   sender
-} from '@/constant/userMsg'
-import db from '@/lib/prisma'
+} from 'more/constant/userMsg'
+import db from 'more/lib/prisma'
 import { revalidatePath } from 'next/cache'
 import { Resend } from 'resend'
 import bcrypt from 'bcrypt'

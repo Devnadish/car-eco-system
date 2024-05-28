@@ -1,10 +1,8 @@
 'use client'
-import { addDepartmentComment } from '@/app/_pagecomp/provider/db/departmentDb'
 import { Avatar } from '@/components/shared/Avatar'
 import Submit from '@/components/shared/Submit'
 import { Input } from '@/components/ui/input'
-import React from 'react'
-import { addserviceComment } from '../db/ServiceDb'
+import { addDepartmentComment, addserviceComment } from './commentDb'
 
 function AddComment({
   session,

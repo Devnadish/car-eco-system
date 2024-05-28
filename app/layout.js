@@ -1,13 +1,13 @@
-import ThemeProvider from '@/provider/ThemeProvider'
+import ThemeProvider from 'more/provider/ThemeProvider'
 import './globals.css'
-import { Tajwal, Cairo } from '@/lib/fonts'
+import { Tajwal, Cairo } from 'more/lib/fonts'
 import { Toaster } from '@/components/ui/sonner'
-import NavBar from '@/components/menu/navbar/NavBar'
-import UrlProvider from '@/context/serviceProvider'
+import UrlProvider from 'more/context/serviceProvider'
 import { getServerSession } from 'next-auth'
-import AuthProvider from 'authentication/AuthProvider'
-import { options } from 'authentication/options'
+import AuthProvider from 'more/provider/authentication/AuthProvider'
+import { options } from 'more/provider/authentication/options'
 import { checkMails } from '@/app/_pagecomp/admin/mailsystem/db/inbox'
+import NavBar from '@/components/menu/NavBar'
 
 export const metadata = {
   title: 'Create Next App',

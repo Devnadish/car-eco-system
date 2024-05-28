@@ -1,21 +1,20 @@
-import GoBack from '@/components/shared/GoBack'
+import { GoBack } from '@/components/shared/GoHome'
 import Text from '@/components/shared/Text'
 import Image from 'next/image'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
 import React from 'react'
-import { Dot } from '@/lib/icons'
+import { Dot } from 'more/lib/icons'
 
 import { getServerSession } from 'next-auth'
-import { options } from 'authentication/options'
+import { options } from 'more/provider/authentication/options'
 import CommentRules from '@/app/_pagecomp/provider/comment/CommentRules'
 import AddComment from '@/app/_pagecomp/provider/comment/AddComment'
 import ShowComments from '@/app/_pagecomp/provider/comment/ShowComments'
-import { getserviceData } from '@/app/_pagecomp/provider/db/ServiceDb'
+import { getserviceData } from '@/app/_pagecomp/provider/comment/commentDb'
 
 async function page({ params }) {
   const poviderSlug = decodeURIComponent(params.service[0])
   const serviceSlug = decodeURIComponent(params.service[1])
-  // console.log(poviderSlug, serviceSlug)
   const getData = await getserviceData(poviderSlug, serviceSlug)
   const session = await getServerSession(options)
 

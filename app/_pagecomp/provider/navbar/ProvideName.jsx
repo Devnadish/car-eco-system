@@ -1,5 +1,5 @@
 import Text from '@/components/shared/Text'
-import { providerType } from '@/lib/provider'
+import { providerType } from 'more/lib/provider'
 import GoHome from '@/components/shared/GoHome'
 import LoginBtn from '@/app/_pagecomp/user/login/LoginBtn'
 import UserMenu from '@/app/_pagecomp/user/usermenu/UserMenu'

@@ -1,8 +1,8 @@
-import { ShowDepartmentComment } from '@/app/_pagecomp/provider/db/departmentDb'
+// import { ShowDepartmentComment } from '@/app/_pagecomp/provider/db/departmentDb'
 import { Avatar } from '@/components/shared/Avatar'
 import Text from '@/components/shared/Text'
 import { Separator } from '@/components/ui/separator'
-import { getTimeElapsed } from '@/lib/nadish'
+import { getTimeElapsed } from 'more/lib/nadish'
 import React from 'react'
 
 const ShowComments = async ({ comment }) => {

@@ -5,11 +5,11 @@ import { Button } from '@/components/ui/button'
 import { RegisterOutline } from '@/components/svg/Register'
 import SideBox from '@/components/shared/SideBox'
 import InputWithIcon from '@/components/shared/InputWithIcon'
-import { Check, Lock, Mail, User } from '@/lib/icons'
+import { Check, Lock, Mail, User } from 'more/lib/icons'
 
 import Submit from '@/components/shared/Submit'
 import { newUser } from '@/app/_pagecomp/user/db/user'
-import { Notify } from '@/lib/nadish'
+import { Notify } from 'more/lib/nadish'
 import { Important } from '@/components/svg/Important'
 import DialogBox from '@/components/shared/DialogBox'
 import ActivationForm from './ActivationForm'
@@ -20,7 +20,7 @@ import {
   UploadToCloudnary,
   getSignature,
   uploadImagex
-} from '@/db/imageDb'
+} from 'more/db/imageDb'
 
 export function Register() {
   const [openRegister, setOpenRegister] = useState(false)

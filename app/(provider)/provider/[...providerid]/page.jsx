@@ -1,19 +1,19 @@
 import Link from 'next/link'
 import { getServerSession } from 'next-auth'
-import { options } from 'authentication/options'
+import { options } from 'more/provider/authentication/options'
 import ScrollToTop from '@/components/shared/ScrollToTop'
 import Text from '@/components/shared/Text'
-import { RateSection } from '@/app/_pagecomp/provider/sections/rate/RateSection'
-import { HeroSection } from '@/app/_pagecomp/provider/sections/herosection/HeroSection'
 import ImageSlider from '@/app/_pagecomp/provider/gallary/ImageSlider'
-import { ExtraServices } from '@/app/_pagecomp/provider/sections/extraservice/ExtraServices'
-import { Testmoinal } from '@/app/_pagecomp/provider/sections/testmonial/Testmoinal'
-import Fotter from '@/app/_pagecomp/provider/footer/Fotter'
-import { CarFixing } from '@/app/_pagecomp/provider/sections/experiance/CarFixing'
-import { Detail } from '@/app/_pagecomp/provider/sections/aboutus/Detail'
+import { ExtraServices } from '@/app/_pagecomp/provider/sections/ExtraServices'
+import { Testmoinal } from '@/app/_pagecomp/provider/sections/Testmoinal'
+import Fotter from '@/app/_pagecomp/provider/sections/Fotter'
+import { CarFixing } from '@/app/_pagecomp/provider/sections/CarFixing'
+import { Detail } from '@/app/_pagecomp/provider/sections/Detail'
 import UserActions from '@/app/_pagecomp/user/useractions/UserActions'
 import { providerData } from '@/app/_pagecomp/provider/db/singleProvider'
-import { Department } from '@/app/_pagecomp/provider/sections/department/Department'
+import { RateSection } from '@/app/_pagecomp/provider/sections/RateSection'
+import { HeroSection } from '@/app/_pagecomp/provider/sections/HeroSection'
+import { Department } from '@/app/_pagecomp/provider/sections/Department'
 
 export const dynamic = 'force-dynamic'
 
@@ -34,6 +34,7 @@ async function page({ params }) {
       <div className='flex w-full items-center justify-end'>
         {thisProvider && <ProviderMenu providerid={providerInfo.id} />}
       </div>
+
       <RateSection
         session={session}
         providerId={providerInfo.id}
@@ -91,10 +92,29 @@ async function page({ params }) {
 export default page
 
 // TODO: Rechack router Cache  when you come again to same prvider it come from the cash so the viewer counter not update
+
 // TODO: chack lastONe return undefiend
+// TOTO: Move It TO USER MENU SHOW IF PROVIDER
 const ProviderMenu = ({ providerid }) => {
   return (
     <div className='flex items-center gap-4'>
+      <Link
+        href={`/edit/${providerid}`}
+        className={
+          'flex h-10  items-center justify-between self-end rounded-md bg-purple-500 px-6 py-2 '
+        }
+      >
+        <Text>اضافة عروض</Text>
+      </Link>
+      <Link
+        href={`/edit/${providerid}`}
+        className={
+          'flex h-10  items-center justify-between self-end rounded-md bg-purple-500 px-6 py-2 '
+        }
+      >
+        <Text>اضافة مجاني</Text>
+      </Link>
+
       <Link
         href={`/edit/${providerid}`}
         className={

@@ -4,7 +4,7 @@ import {
   getProvidersRate,
   serviceistWithIdReturnServiceNames
 } from '@/app/_pagecomp/provider/db/providerList'
-import db from '@/lib/prisma'
+import db from 'more/lib/prisma'
 import { revalidatePath } from 'next/cache'
 
 export const getUserActions = async (userid, actionid) => {

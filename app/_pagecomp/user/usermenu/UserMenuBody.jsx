@@ -7,7 +7,7 @@ import {
   Lock,
   MessageCircleMore,
   Star
-} from '@/lib/icons'
+} from 'more/lib/icons'
 import { Like, Dislike } from '@/components/svg/LikeAndDislike'
 import { SendService } from '@/components/svg/SendService'
 import { ItemLink } from '@/app/_pagecomp/user/usermenu/ItemLink'
@@ -15,7 +15,7 @@ import { SelectCity } from './SelectCity'
 import { HistoryIcon } from '@/components/svg/History'
 import { Separator } from '@/components/ui/separator'
 import { ScrollArea } from 'node_modules/@radix-ui/react-scroll-area/dist/index'
-import { createUserMenuLinks, getUserMenu } from '@/constant/menu'
+import { createUserMenuLinks, getUserMenu } from 'more/constant/menu'
 
 export function UserMenuBody({ isVerified, userId, setOpen }) {
   const menuItems = [
