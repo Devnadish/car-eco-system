@@ -25,11 +25,7 @@ export const ExtraServices = ({ service, providerId, providerSlug }) => {
                   sizes='(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw'
                   className='rounded-lg fill-white object-contain '
                 />
-                <Text
-                  fontSize={'smalllarge'}
-                  fontFamily={'tajwal'}
-                  opacity={'O70'}
-                >
+                <Text fontSize={'small'} fontFamily={'tajwal'} opacity={'O70'}>
                   {service.service}
                 </Text>
               </div>

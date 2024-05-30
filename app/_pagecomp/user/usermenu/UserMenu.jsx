@@ -30,26 +30,25 @@ function UserMenu({ session, newMails }) {
   const role = session?.user?.role
 
   return (
-    <div className='flex  items-center gap-1  px-1'>
-      <Button
-        variant='ghost'
-        className='relative flex items-center justify-center rounded-full   bg-transparent'
+    <div className='flex   items-center     '>
+      <div
+        className='relative   cursor-pointer     rounded-full  bg-transparent '
         onClick={() => setOpen(true)}
       >
         <Avatar
           src={userAvatar}
           alt={useremail}
-          fallBack={'CR'}
-          className='p-1'
+          fallBack={useremail}
           role={role}
         />
-
-        <div className='absolute right-3 top-0 flex size-4 items-center justify-center rounded-full  bg-destructive  text-primary-foreground'>
-          <span className='text-[.6rem] text-destructive-foreground'>
-            {newMails?.length || 0}
-          </span>
-        </div>
-      </Button>
+        {newMails?.length !== 0 ? null : (
+          <div className='absolute left-0 top-2 flex size-5 items-center justify-center rounded-full  bg-destructive  text-primary-foreground'>
+            <span className='text-[.6rem] text-destructive-foreground'>
+              {newMails?.length || 0}
+            </span>
+          </div>
+        )}
+      </div>
 
       {!isVerified && <ActivationForm />}
 
@@ -147,33 +146,30 @@ export function UserMenuBody({ isVerified, userId, setOpen }) {
   ]
 
   return (
-    <>
-      <div className='' name='header' dir='rtl'>
-        {menuItems.map((item, index) => (
-          <React.Fragment key={index}>
-            <ItemLink
-              href={item.href}
-              text={item.text}
-              icon={item.icon}
-              setOpen={setOpen}
-            />
-            {/* {index !== menuItems.length - 1 && <Separator />} */}
-          </React.Fragment>
-        ))}
-        {!isVerified && (
-          <div className='absolute left-0 top-0 flex h-full w-full flex-col items-center justify-center rounded bg-secondary opacity-60'>
-            <Lock size={80} className='text-red-500' />
-            <Text
-              fontFamily={'tajwal'}
-              fontSize={'large'}
-              className={'text-red-500'}
-            >
-              حساب غير نشط
-            </Text>
-          </div>
-        )}
-      </div>
-      {/* <SelectCity /> */}
-    </>
+    <div className='' name='header' dir='rtl'>
+      {menuItems.map((item, index) => (
+        <React.Fragment key={index}>
+          <ItemLink
+            href={item.href}
+            text={item.text}
+            icon={item.icon}
+            setOpen={setOpen}
+          />
+          {/* {index !== menuItems.length - 1 && <Separator />} */}
+        </React.Fragment>
+      ))}
+      {!isVerified && (
+        <div className='absolute left-0 top-0 flex h-full w-full flex-col items-center justify-center rounded  bg-secondary opacity-60'>
+          <Lock size={80} className='text-red-500' />
+          <Text
+            fontFamily={'tajwal'}
+            fontSize={'large'}
+            className={'text-red-500'}
+          >
+            حساب غير نشط
+          </Text>
+        </div>
+      )}
+    </div>
   )
 }

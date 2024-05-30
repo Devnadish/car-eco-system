@@ -10,11 +10,11 @@ module.exports = {
   prefix: '',
   theme: {
     screens: {
-      sm: '320px',
+      xs: '320px',
+      sm: '370px', // Adjust for small screens if needed, e.g. 640px',
       md: '768px',
       lg: '1024px',
-      xl: '1280px',
-      '2xl': '1536px'
+      xl: '1280px'
     },
     container: {
       center: true,

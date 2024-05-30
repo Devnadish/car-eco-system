@@ -52,5 +52,6 @@ export {
   X,
   Reply,
   Share2,
-  MoveLeft
+  MoveLeft,
+  ArrowDownWideNarrow as SortIcon
 } from 'lucide-react'

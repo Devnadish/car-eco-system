@@ -1,5 +1,5 @@
 import { Avatar } from '@/components/shared/Avatar'
-import { LocateFixed } from 'more/lib/icons'
+import { LocateFixed, Share2 } from 'more/lib/icons'
 import { Card, CardContent, CardFooter, CardHeader } from '@/components/ui/card'
 import { providerType, providerTypeIcon } from 'more/lib/provider'
 import { Badge } from '@/components/ui/badge'
@@ -18,7 +18,6 @@ function NewCard({ providerInfo }) {
     <Link
       href={{
         pathname: `/provider/${provider.slug}`
-        // pathname: `/provider/${provider.id}/${provider.slug}`
       }}
       className=' flex h-full w-[300px]  rounded-md border border-border  shadow-lg hover:border-primary'
     >
@@ -60,6 +59,7 @@ function NewCard({ providerInfo }) {
             commentCount={provider.commentCount}
             favCount={provider.favCount}
             viewerCount={provider.viewerCount}
+            shareCount={provider.shareCount}
           />
         </CardFooter>
       </Card>
@@ -114,7 +114,9 @@ export const CarFix = ({ carTypes }) => {
             variant='outline'
             className='flex flex-grow items-center justify-center border-border'
           >
-            <Text className='text-muted-foreground'>{name}</Text>
+            <Text className='font-montserrat text-sm text-muted-foreground'>
+              {name}
+            </Text>
           </Badge>
         ))}
       </div>
@@ -160,7 +162,13 @@ export const RateAndExtraSevice = ({ moreService, rate }) => {
   )
 }
 
-export const CardBar = ({ likeCount, viewerCount, commentCount, favCount }) => {
+export const CardBar = ({
+  likeCount,
+  viewerCount,
+  commentCount,
+  favCount,
+  shareCount
+}) => {
   const style1 =
     'flex h-8 w-12  items-center justify-center rounded  p-1 text-muted-foreground '
   return (
@@ -171,8 +179,8 @@ export const CardBar = ({ likeCount, viewerCount, commentCount, favCount }) => {
       </Text>
       <Separator orientation='vertical' />
       <Text fontSize={'xs'} className={style1}>
-        <Like className='size-4 text-blue-800' />
-        {likeCount}
+        <Share2 className='size-4 text-blue-800' />
+        {shareCount}
       </Text>
       <Separator orientation='vertical' />
       <Text fontSize={'xs'} className={style1}>

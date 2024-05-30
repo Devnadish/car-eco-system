@@ -36,8 +36,11 @@ function NewMail({ urlPrefix, session, to }) {
   return (
     <Drawer open={open} onOpenChange={setOpen}>
       <DrawerTrigger asChild>
-        <Button className='hover:bg-white hover:text-primary'>
-          <EMail className='size-8 text-white  hover:text-primary' />
+        <Button
+          className='size-7 p-0 hover:bg-white hover:text-primary'
+          variant='ghost'
+        >
+          <EMail className='size-6 text-white  hover:text-primary' />
         </Button>
       </DrawerTrigger>
       <DrawerContent>

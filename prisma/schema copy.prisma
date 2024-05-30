@@ -15,12 +15,12 @@ model Provider {
   id           String        @id @default(auto()) @map("_id") @db.ObjectId
   slug         String        @unique
   providerName String        @default("")
-  carFixing    String[]
   email        String        @unique
   mobile       String        @unique
   coverImage   String        @default("")
   logo         String        @default("")
   heroSlogon   String        @default("")
+  carType      String[]
   starCount    Int           @default(0)
   commentCount Int           @default(0)
   likeCount    Int           @default(0)
@@ -28,7 +28,7 @@ model Provider {
   viewerCount  Int           @default(0)
   favCount     Int           @default(0)
   shareCount   Int           @default(0)
-  department      String[]
+  service      String[]
   extarService String[]
   workingHours String        @default("")
   description  String        @default("")

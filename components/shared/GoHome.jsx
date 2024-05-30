@@ -1,15 +1,12 @@
 import { Home } from 'more/lib/icons'
 import Link from 'next/link'
+import { useRouter } from 'next/router'
 
 const GoHome = () => {
   return (
-    <>
-      <div className='mr-2  px-2  '>
-        <Link href='/'>
-          <Home className='size-5 opacity-55' />
-        </Link>
-      </div>{' '}
-    </>
+    <Link href='/'>
+      <Home strokeWidth={1} className='size-8 opacity-80' />
+    </Link>
   )
 }
 export default GoHome

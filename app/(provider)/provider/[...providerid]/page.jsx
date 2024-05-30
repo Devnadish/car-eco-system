@@ -71,8 +71,8 @@ async function page({ params }) {
       />
       <Testmoinal />
       <Fotter workingHours={providerInfo.workingHours} />
-      <ScrollToTop />
-      <UserActions
+      {/* <ScrollToTop /> */}
+      {/* <UserActions
         providerName={providerInfo.providerName}
         session={session}
         providerId={providerInfo.id}
@@ -84,7 +84,7 @@ async function page({ params }) {
         commentCount={providerInfo.commentCount}
         shareCount={providerInfo.shareCount}
         favCount={providerInfo.favCount}
-      />
+      /> */}
     </div>
   )
 }

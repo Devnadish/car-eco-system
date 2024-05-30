@@ -1,12 +1,13 @@
 'use client'
-import SearchProvider from './SearchProvider'
-import DropMenu from '@/components/shared/DropMenu'
-import { carLogos } from 'more/constant/carLogo'
-import { Car, SlidersVertical } from 'more/lib/icons'
-import ClearFilter from '@/components/shared/ClearFilter'
-import FilterMenu from './FilterMenu'
-import { filterMenu } from 'more/constant/menu'
+import {
+  Eye,
+  HeartHandshake,
+  Share2,
+  SlidersVertical,
+  SortIcon
+} from 'more/lib/icons'
 import { Button } from '@/components/ui/button'
+import { ArrowDown10, Car, Store } from 'more/lib/icons'
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -20,8 +21,9 @@ import WorkshopSVG from '@/components/svg/WorkshopSVG'
 import WorkShopCenterSvg from '@/components/svg/WorkShopCenterSvg'
 import MechancalMan from '@/components/svg/MechancalMan'
 import { urlQuery } from 'more/lib/nadish'
-import { usePathname, useSearchParams, useRouter } from 'next/navigation'
+import { usePathname, useRouter } from 'next/navigation'
 import Text from '@/components/shared/Text'
+import { StarFilled } from '@/components/svg/StarFilled'
 
 export const Bar = ({ providersLength, pageCount, query }) => {
   const pathName = usePathname()
@@ -29,98 +31,162 @@ export const Bar = ({ providersLength, pageCount, query }) => {
     return
   }
   return (
-    <>
-      <div className='fixed left-0 top-12 z-40 flex w-full    items-center justify-between    bg-border px-2'>
-        <div className='flex h-12  items-end justify-end gap-2 '>
-          <DropDownFilter
-            icon={<SlidersVertical strokeWidth={1} />}
-            title='تصفية البيانات '
-            menu={filterMenu}
-          />
-          <SearchProvider />
-          <ClearFilter />
-        </div>
-        <div>
-          <FilterMenu query={query} providersLength={providersLength} />
-        </div>
-      </div>
-      <DropMenu
-        frameworks={carLogos}
-        label='اختار  سيارتك'
-        icon={
-          <Car className='size-8 text-primary-foreground' strokeWidth={1} />
-        }
-        placeholder='ابحث عن سيارتك'
-        noDataMessage='لا توجد سيارتك'
-      />
-    </>
+    <div className='fixed left-0 top-14 z-40 flex h-16   w-full items-center justify-between bg-primary/10    px-7  md:flex-row'>
+      <WrokShopType />
+      <SortMenu />
+    </div>
   )
 }
 
-export function DropDownFilter({ icon, menu, title }) {
-  const pathName = usePathname()
-  const router = useRouter()
+function FilterMenu({ query, providersLength }) {
+  const { vechile, sort, type } = query
+  let sortVar
+  let typeVar
+  let vechileVar
+  !vechile ? (vechileVar = 'اختار سيارتك') : (vechileVar = vechile)
 
+  switch (sort) {
+    case 'star':
+      sortVar = 'حسب النجوم'
+      break
+    case 'comment':
+      sortVar = 'حسب التعليقات'
+      break
+
+    default:
+      sortVar = 'حسب النجوم'
+      break
+  }
+
+  switch (type) {
+    case 'center':
+      typeVar = 'مراكز صيانة'
+      break
+    case 'workshop':
+      typeVar = 'ورش صيانة'
+      break
+    case 'man':
+      typeVar = 'افراد'
+      break
+    default:
+      typeVar = 'الكل'
+      break
+  }
+  return (
+    <div className='flex w-full  items-center justify-between gap-4 md:justify-end'>
+      {/* <SelectedCar data={vechileVar} providersLength={providersLength} /> */}
+      <Description
+        icon={<ArrowDown10 className='size-5 opacity-45 ' strokeWidth={1} />}
+        data={sortVar}
+      />
+      <Description
+        icon={<Store className='size-5 opacity-45' strokeWidth={1} />}
+        data={typeVar}
+      />
+    </div>
+  )
+}
+
+export default FilterMenu
+
+const Description = ({ icon, data, opacity = 'O40' }) => {
+  return (
+    <div className='flex items-center gap-1  border-b px-1 text-sm '>
+      {icon}
+      <Text
+        opacity={opacity}
+        className='hidden text-[.6rem] capitalize  md:block md:text-sm'
+        fontFamily={'tajwal'}
+      >
+        {data}
+      </Text>
+    </div>
+  )
+}
+
+const WrokShopType = () => {
+  const router = useRouter()
+  const pathName = usePathname()
+  const handleChange = (xtype, value) => {
+    const queryString = urlQuery(xtype, value)
+    const updatedUrl = `${pathName}${queryString ? `?${queryString}` : ''}`
+    router.push(updatedUrl)
+  }
+
+  return (
+    <div className='flex   items-center  gap-4 md:justify-end'>
+      <Button
+        className='flex size-9 w-fit items-center  gap-2 rounded  bg-white/10 px-3 py-1 text-sm hover:bg-secondary/80 lg:w-fit   '
+        onClick={() => handleChange('type', 'h')}
+      >
+        <MechancalMan className='text-primary' />
+      </Button>
+      <Button
+        className='flex size-9 w-fit items-center  gap-2 rounded  bg-white/10 px-3 py-1 text-sm hover:bg-secondary/80 lg:w-fit   '
+        onClick={() => handleChange('type', 'w')}
+      >
+        <WorkshopSVG className='text-primary' />
+      </Button>
+      <Button
+        className='flex size-9 w-fit items-center  gap-2 rounded  bg-white/10 px-3 py-1 text-sm hover:bg-secondary/80 lg:w-fit   '
+        onClick={() => handleChange('type', 'c')}
+      >
+        <WorkShopCenterSvg className='text-primary' />
+      </Button>
+    </div>
+  )
+}
+
+export function SortMenu() {
+  const router = useRouter()
+  const pathName = usePathname()
   const handleChange = (xtype, value) => {
     const queryString = urlQuery(xtype, value)
     const updatedUrl = `${pathName}${queryString ? `?${queryString}` : ''}`
     router.push(updatedUrl)
   }
   return (
-    <DropdownMenu dir='rtl'>
+    <DropdownMenu dir='rtl' modal={false}>
       <DropdownMenuTrigger asChild>
-        <Button variant='ghost' size='sm' className='    hover:bg-primary'>
-          {icon}
+        <Button className='flex size-9 w-fit items-center  gap-2 rounded  bg-white/10 px-3 py-1 text-sm hover:bg-secondary/80 lg:w-fit   '>
+          <SortIcon className='text-primary' />
         </Button>
       </DropdownMenuTrigger>
-      <DropdownMenuContent className='w-56'>
-        <DropdownMenuLabel>
-          <Text> {title}</Text>
-        </DropdownMenuLabel>
-        <DropdownMenuSeparator />
+
+      <DropdownMenuContent className='flex min-w-9 flex-col items-center justify-center'>
         <DropdownMenuItem
+          className='flex items-center gap-4 hover:bg-secondary'
           onClick={() => handleChange('sort', 'star')}
-          className='flex items-center gap-4 hover:bg-secondary'
         >
-          <Star className='size-4 text-foreground' />
-          <Text> حسب النجوم</Text>
+          <StarFilled className='size-6 text-yellow-400' />
         </DropdownMenuItem>
-        <DropdownMenuItem
-          onClick={() => handleChange('sort', 'comment')}
-          className='flex items-center gap-4 hover:bg-secondary'
-        >
-          <MessageCircleMore className='size-4 text-foreground' />
-          <Text> حسب التعليقات</Text>
-        </DropdownMenuItem>
-        <DropdownMenuSeparator />
 
         <DropdownMenuItem
-          onClick={() => handleChange('type', 'center')}
           className='flex items-center gap-4 hover:bg-secondary'
+          onClick={() => handleChange('sort', 'comment')}
         >
-          <WorkShopCenterSvg className='size-4 text-foreground' />
-          <Text> مراكز الصيانه</Text>
+          <MessageCircleMore className='size-6 text-green-400' />
         </DropdownMenuItem>
+
         <DropdownMenuItem
-          onClick={() => handleChange('type', 'workshop')}
           className='flex items-center gap-4 hover:bg-secondary'
+          onClick={() => handleChange('sort', 'share')}
         >
-          <WorkshopSVG className='size-4 text-foreground' />
-          <Text> ورش الصيانة</Text>
+          <Share2 className='size-6 text-primary' />
         </DropdownMenuItem>
+
         <DropdownMenuItem
-          onClick={() => handleChange('type', 'man')}
           className='flex items-center gap-4 hover:bg-secondary'
+          onClick={() => handleChange('sort', 'viewer')}
         >
-          <MechancalMan className='size-4 text-foreground' />
-          <Text> الافراد</Text>
+          <Eye className='size-6 text-primary text-purple-700' />
         </DropdownMenuItem>
+
         <DropdownMenuItem
-          onClick={() => handleChange('type', 'all')}
           className='flex items-center gap-4 hover:bg-secondary'
+          onClick={() => handleChange('sort', 'fav')}
         >
-          <Star className='size-4 text-foreground' />
-          <Text> الكل</Text>
+          <HeartHandshake className='size-6 text-red-500' />
         </DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>

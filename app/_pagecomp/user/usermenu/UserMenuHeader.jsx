@@ -51,7 +51,7 @@ export function UserMenuHeader({
 
       <div className='-z-100 absolute left-0 top-5 flex h-1/2 w-full items-end justify-between rounded-md bg-secondary px-4 opacity-80'>
         <Link
-          href={`/user/profile/${userid}`}
+          href={`/profile/${userid}`}
           className='flex rounded   hover:text-blue-500'
         >
           <Pencil className='size-5 hover:size-6' />

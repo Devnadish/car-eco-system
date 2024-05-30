@@ -48,37 +48,6 @@ export const providerData = async (providerSlug, userid) => {
   const userActions = await CheckUserAction(id, userid)
   const Imeges = await db.image.findMany({ where: { providerid: id } })
 
-  // const [
-  //   Imeges,
-  //   carsInfo,
-  //   Department,
-  //   extraService,
-  //   providerRate,
-  //   branchWorkingshour,
-  //   userActions
-  // ] = await Promise.all([
-  //   db.image.findMany({ where: { providerid: id } }),
-  //   db.car.findMany({
-  //     where: {
-  //       id: { in: providerInfo.carType } // List of car type IDs
-  //     },
-  //     select: { name: true, image: true }
-  //   }),
-  //   db.service.findMany({
-  //     where: {
-  //       id: { in: providerInfo.service } // List of car type IDs
-  //     }
-  //   }),
-  //   db.service.findMany({
-  //     where: {
-  //       id: { in: providerInfo.extarService } // List of car type IDs
-  //     }
-  //   }),
-  //   CollectRatine(id),
-  //   db.providerBranch.findMany({ where: { providerid: id } }),
-  //   CheckUserAction(id, userid)
-  // ])
-
   // Increase viewr By One
   const addProviderViewer = await addViewer(id, userid)
 

@@ -11,7 +11,30 @@ import { getProviderWithCarNames, getProvidersRate } from './providerDButl'
 import { CollectRatine } from './rateDb'
 
 export const getProviders = async (pageNo, query) => {
-  const { vechile } = query || {}
+  const { vechile, type, sort } = query || {}
+  // TODO: fix this find solution for car rateing shold be in provider db
+  let sortBy
+  switch (sort) {
+    case 'star':
+      sortBy = { starCount: 'desc' }
+      break
+    case 'comment':
+      sortBy = { commentCount: 'desc' }
+      break
+    case 'viewer':
+      sortBy = { viewerCount: 'desc' }
+      break
+    case 'fav':
+      sortBy = { favCount: 'desc' }
+      break
+    case 'share':
+      sortBy = { shareCount: 'desc' }
+      break
+    default:
+      sortBy = { starCount: 'desc' }
+      break
+  }
+
   let carId
   if (vechile) {
     carId = await db.car.findFirst({
@@ -19,20 +42,28 @@ export const getProviders = async (pageNo, query) => {
       select: { id: true }
     })
   }
-  const carCondition = carId
-    ? {
-        carType: {
-          hasEvery: [carId.id]
-        }
+
+  let carCondition = {}
+
+  if (carId) {
+    carCondition = {
+      carFixing: {
+        hasEvery: [carId.id]
       }
-    : {}
+    }
+  }
+
+  if (type) {
+    carCondition = { ...carCondition, type: type }
+  }
 
   const limit = parseInt(process.env.PROVODER_PAGE_LIMIT)
   const skip = (pageNo - 1) * limit
   const providers = await db.provider.findMany({
     take: limit,
     skip,
-    where: carCondition
+    where: carCondition,
+    orderBy: sortBy
   })
 
   const totalProvidersCount = await db.provider.count({ where: carCondition })

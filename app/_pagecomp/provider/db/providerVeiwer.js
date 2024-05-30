@@ -8,6 +8,7 @@ import { revalidatePath } from 'next/cache'
 // 3-view provider
 
 export const addViewer = async (providerid, userid) => {
+  console.log(providerid, userid)
   const isExist = await db.userAction.findMany({
     where: { userid: userid, providerid: providerid, actionid: 3 }
   })
@@ -15,9 +16,9 @@ export const addViewer = async (providerid, userid) => {
   if (isExist.length === 0) {
     await addViewAction(providerid, userid)
     await increaseProviderViewCounter(providerid)
-    revalidatePath(`/reaction/${userid}/history`)
+    console.log(providerid, userid)
     revalidatePath(`/`)
-
+    // revalidatePath(`/reaction/${userid}/history`)
     return { message: 'done' }
   }
 }
